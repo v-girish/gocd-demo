@@ -20,4 +20,5 @@ pipelines:
                - exec: # indicates type of task
                    command: /bin/bash
                    arguments:
-                    - -c "echo Built service1 successfully"
+                    - "-c" 
+                    - "echo Built service1 successfully"
