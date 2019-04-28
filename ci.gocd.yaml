@@ -1,5 +1,5 @@
 #ci.gocd.yaml
-format_version: 4
+format_version: 3
 pipelines:
   service1-build: # definition of mypipe1 pipeline
     group: build # note that the group name can contain only of alphanumeric & underscore characters
