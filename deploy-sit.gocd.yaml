@@ -29,17 +29,17 @@ pipelines:
                    command: /bin/bash
                    arguments:
                     - "-c" 
-                    - "echo ${GO_DEPENDENCY_LABEL_SERVICE1_UPSTREAM} > versions.txt"
+                    - "echo service1:${GO_DEPENDENCY_LABEL_SERVICE1_UPSTREAM} > versions.txt"
                - exec: 
                    command: /bin/bash
                    arguments:
                     - "-c" 
-                    - "echo ${GO_DEPENDENCY_LABEL_SERVICE2_UPSTREAM} >> versions.txt"
+                    - "echo service2:${GO_DEPENDENCY_LABEL_SERVICE2_UPSTREAM} >> versions.txt"
                - exec: 
                    command: /bin/bash
                    arguments:
                     - "-c" 
-                    - "echo ${GO_DEPENDENCY_LABEL_SERVICE3_UPSTREAM} >> versions.txt"            
+                    - "echo service3:${GO_DEPENDENCY_LABEL_SERVICE3_UPSTREAM} >> versions.txt"            
                - exec: 
                    command: /bin/bash
                    arguments:

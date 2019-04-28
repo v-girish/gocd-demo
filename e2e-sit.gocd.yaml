@@ -31,4 +31,9 @@ pipelines:
                    command: /bin/bash
                    arguments:
                     - "-c" 
+                    - "cat versions.txt"     
+               - exec: 
+                   command: /bin/bash
+                   arguments:
+                    - "-c" 
                     - "echo E2E tests completed successfully" 
