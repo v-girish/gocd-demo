@@ -14,8 +14,8 @@ pipelines:
       - build: # name of stage
           clean_workspace: true
           jobs:
-            elastic_profile_id: "metadataservice-app"
             build: # name of the job
+              elastic_profile_id: "metadataservice-app"
               tasks: # ordered list of tasks to execute in job csharp
                - exec: # indicates type of task
                    command: /bin/bash
