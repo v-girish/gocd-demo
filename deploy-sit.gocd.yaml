@@ -21,7 +21,7 @@ pipelines:
           jobs:
             deploy: # name of the job
               artifacts:
-               - versions:
+               - build:
                    source: versions.txt
               tasks: # ordered list of tasks to execute in job csharp
                - exec: # indicates type of task
