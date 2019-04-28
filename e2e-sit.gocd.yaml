@@ -26,7 +26,6 @@ pipelines:
                    job: deploy
                    is_file: yes
                    source: versions.txt
-                   destination: versions.txt
                - exec: 
                    command: /bin/bash
                    arguments:
