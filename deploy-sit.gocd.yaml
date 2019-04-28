@@ -1,0 +1,48 @@
+#ci.gocd.yaml
+format_version: 3
+pipelines:
+  deploy-sit: # definition of mypipe1 pipeline
+    group: deploy # note that the group name can contain only of alphanumeric & underscore characters
+    label_template: "${COUNT}"
+    lock_behavior: none
+    materials:
+      service1-upstream: 
+        pipeline: service1-build
+        stage: build
+      service2-upstream: 
+        pipeline: service2-build
+        stage: build
+      service3-upstream: 
+        pipeline: service3-build
+        stage: build    
+    stages: # list of stages in order
+      - deploy: # name of stage
+          clean_workspace: true
+          jobs:
+            deploy: # name of the job
+              artifacts:
+               - versions:
+                   source: versions.txt
+              tasks: # ordered list of tasks to execute in job csharp
+               - exec: # indicates type of task
+                   command: /bin/bash
+                   arguments:
+                    - "-c" 
+                    - "echo ${GO_DEPENDENCY_LABEL_SERVICE1_BUILD} > versions.txt"
+               - exec: 
+                   command: /bin/bash
+                   arguments:
+                    - "-c" 
+                    - "echo ${GO_DEPENDENCY_LABEL_SERVICE2_BUILD} >> versions.txt"
+               - exec: 
+                   command: /bin/bash
+                   arguments:
+                    - "-c" 
+                    - "echo ${GO_DEPENDENCY_LABEL_SERVICE3_BUILD} >> versions.txt"            
+               - exec: 
+                   command: /bin/bash
+                   arguments:
+                    - "-c" 
+                    - "echo Deployed successfully service1 with version ${GO_DEPENDENCY_LABEL_SERVICE1_BUILD}"   
+                    - "echo Deployed successfully service1 with version ${GO_DEPENDENCY_LABEL_SERVICE2_BUILD}"   
+                    - "echo Deployed successfully service1 with version ${GO_DEPENDENCY_LABEL_SERVICE3_BUILD}"   
