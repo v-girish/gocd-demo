@@ -29,21 +29,19 @@ pipelines:
                    command: /bin/bash
                    arguments:
                     - "-c" 
-                    - "echo ${GO_DEPENDENCY_LABEL_SERVICE1_BUILD} > versions.txt"
+                    - "echo ${GO_DEPENDENCY_LABEL_SERVICE1_UPSTREAM} > versions.txt"
                - exec: 
                    command: /bin/bash
                    arguments:
                     - "-c" 
-                    - "echo ${GO_DEPENDENCY_LABEL_SERVICE2_BUILD} >> versions.txt"
+                    - "echo ${GO_DEPENDENCY_LABEL_SERVICE2_UPSTREAM} >> versions.txt"
                - exec: 
                    command: /bin/bash
                    arguments:
                     - "-c" 
-                    - "echo ${GO_DEPENDENCY_LABEL_SERVICE3_BUILD} >> versions.txt"            
+                    - "echo ${GO_DEPENDENCY_LABEL_SERVICE3_UPSTREAM} >> versions.txt"            
                - exec: 
                    command: /bin/bash
                    arguments:
                     - "-c" 
-                    - "echo Deployed successfully service1 with version ${GO_DEPENDENCY_LABEL_SERVICE1_BUILD}"   
-                    - "echo Deployed successfully service1 with version ${GO_DEPENDENCY_LABEL_SERVICE2_BUILD}"   
-                    - "echo Deployed successfully service1 with version ${GO_DEPENDENCY_LABEL_SERVICE3_BUILD}"   
+                    - "echo Deployed successfully" 
