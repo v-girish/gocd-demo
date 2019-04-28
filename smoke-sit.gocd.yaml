@@ -1,0 +1,38 @@
+#ci.gocd.yaml
+format_version: 3
+pipelines:
+  smoke-sit: # definition of mypipe1 pipeline
+    group: test # note that the group name can contain only of alphanumeric & underscore characters
+    label_template: "${COUNT}"
+    lock_behavior: none
+    materials:
+      deploy-sit-upstream: 
+        pipeline: deploy-sit
+        stage: deploy  
+    stages: # list of stages in order
+      - smoke: # name of stage
+          clean_workspace: true
+          jobs:
+            smoke: # name of the job
+              elastic_profile_id: "metadataservice-app"
+              artifacts:
+               - build:
+                   source: versions.txt
+              tasks: # ordered list of tasks to execute in job csharp
+               - fetch:
+                   run_if: passed
+                   pipeline: deploy-sit
+                   stage: deploy
+                   job: deploy
+                   is_file: yes
+                   source: versions.txt
+               - exec: 
+                   command: /bin/bash
+                   arguments:
+                    - "-c" 
+                    - "cat versions.txt"     
+               - exec: 
+                   command: /bin/bash
+                   arguments:
+                    - "-c" 
+                    - "echo Smoke tests completed successfully" 
