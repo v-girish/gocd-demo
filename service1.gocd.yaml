@@ -21,4 +21,4 @@ pipelines:
                    command: /bin/bash
                    arguments:
                     - "-c" 
-                    - "echo Built service1 successfully"
+                    - "mvn clean compile package"
