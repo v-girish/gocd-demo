@@ -20,7 +20,7 @@ pipelines:
           clean_workspace: true
           jobs:
             deploy: # name of the job
-              elastic_profile_id: "metadataservice-app"
+              elastic_profile_id: "demo-app"
               artifacts:
                - build:
                    source: versions.txt
